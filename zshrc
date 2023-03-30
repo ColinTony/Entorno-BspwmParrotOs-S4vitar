@@ -65,7 +65,7 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-sudo/sudo.plugin.zsh
 
 # Vi mode
-bindkey -v
+#bindkey -v
 export KEYTIMEOUT=1
 
 # Save type history for completion and easier life
@@ -82,13 +82,15 @@ setopt histignorealldups sharehistory
 echo -en "\e]2;Parrot Terminal\a"
 preexec () { print -Pn "\e]0;$1 - Parrot Terminal\a" }
 
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+source /home/c0l1nr00t/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Custom Aliases
-alias cat='batcat'
+alias cat='bat'
+alias catnp='bat --paging=never'
+alis catnpl='bat --paging=never --style plain'
 alias ll='lsd -lh --group-dirs=first'
 alias la='lsd -a --group-dirs=first'
 alias l='lsd --group-dirs=first'
@@ -120,6 +122,10 @@ function settarget(){
     ip_address=$1
     machine_name=$2
     echo "$ip_address $machine_name" > /home/c0l1nr00t/.config/bin/target
+}
+
+function cleartarget(){
+	echo '' > /home/c0l1nr00t/.config/bin/target
 }
 
 bindkey "^[[H" beginning-of-line
